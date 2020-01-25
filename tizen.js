@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
     tizen.tvinputdevice.registerKey('MediaFastForward');
 
     require(['inputManager', 'focusManager', 'viewManager', 'appRouter', 'actionsheet'], function(inputManager, focusManager, viewManager, appRouter, actionsheet) {
-        const commands = {
+        var commands = {
             '10009': 'back',
             '19': 'pause',
             '415': 'play',
