@@ -23,15 +23,17 @@ jobs:
       - task: CmdLine@2
         displayName: Install Jellyfin Web
         inputs:
-          script: 'yarn install'
+          script: |
+            yarn install
           workingDirectory: $(Agent.TempDirectory)/jellyfin-web
-          failOnStderr: true
+          failOnStderr: false
 
       - task: CmdLine@2
         displayName: Install Jellyfin Tizen
         inputs:
-          script: 'JELLYFIN_WEB_DIR=$(Agent.TempDirectory)/jellyfin-web/dist yarn install'
-          failOnStderr: true
+          script: | 
+            JELLYFIN_WEB_DIR=$(Agent.TempDirectory)/jellyfin-web/dist yarn install
+          failOnStderr: false
 
 
  
