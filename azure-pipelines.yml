@@ -15,7 +15,7 @@ jobs:
         displayName: Check out Jellyfin Web
         inputs:
           script: |
-            git clone --single-branch --branch master --depth=1 https://github.com/jellyfin/jellyfin-web.git $(Agent.TempDirectory)/jellyfin-web"
+            git clone --single-branch --branch master --depth=1 https://github.com/jellyfin/jellyfin-web.git $(Agent.TempDirectory)/jellyfin-web
       - task: UseNode@1
         displayName: Install Node
         inputs:
