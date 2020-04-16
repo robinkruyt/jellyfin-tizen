@@ -96,10 +96,12 @@ jobs:
           OverWrite: true
 
       - task: GitHubRelease@1
+        displayName: Creating Github Release
         inputs:
           gitHubConnection: 'github.com_robinkruyt'
           repositoryName: '$(Build.Repository.Name)'
           action: 'create'
           target: '$(Build.SourceVersion)'
-          tagSource: 'gitTag'
+          tagSource: 'userSpecifiedTag'
+          tag: '$(Build.BuildNumber)'
           addChangeLog: false
