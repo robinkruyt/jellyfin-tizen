@@ -58,7 +58,7 @@ jobs:
                 $TIZEN_HOME/tizen-studio/license \
                 $TIZEN_HOME/tizen-studio/package-manager
 
-            export PATH= $TIZEN_HOME/tizen-studio/tools: $TIZEN_HOME/tizen-studio/tools/ide/bin:$PATH
+            export PATH=$TIZEN_HOME/tizen-studio/tools:$TIZEN_HOME/tizen-studio/tools/ide/bin:$PATH
           failOnStderr: false
 
       - task: CmdLine@2
