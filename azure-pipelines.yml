@@ -95,13 +95,6 @@ jobs:
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
           OverWrite: true
 
-      - task: PublishBuildArtifacts@1
-        displayName: Publish artifacts
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'DebugBuild'
-          publishLocation: 'Container'
-
       - task: GitHubRelease@1
         inputs:
           gitHubConnection: 'github.com_robinkruyt'
