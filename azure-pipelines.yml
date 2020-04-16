@@ -56,15 +56,17 @@ jobs:
               && rm -rf \
                 $TIZEN_HOME/.package-manager \
                 $TIZEN_HOME/tizen-studio/license \
-                $TIZEN_HOME/tizen-studio/package-manager
-
-            export PATH=$TIZEN_HOME/tizen-studio/tools:$TIZEN_HOME/tizen-studio/tools/ide/bin:$PATH
+                $TIZEN_HOME/tizen-studio/package-manager            
           failOnStderr: false
 
       - task: CmdLine@2
         displayName: Setup certificates
         inputs:
           script: |
+            export PATH=$TIZEN_HOME/tizen-studio/tools:$TIZEN_HOME/tizen-studio/tools/ide/bin:$PATH
+            echo $PATH
+            ls $TIZEN_HOME/tizen-studio/tools
+            ls $TIZEN_HOME/tizen-studio/tools/ide/bin
             export CERTIFICATE_DIR=$(Agent.TempDirectory)/certificates
             mkdir -p $CERTIFICATE_DIR
             echo $(CERTIFICATE) | base64 --decode > $CERTIFICATE_DIR/certificate.p12
