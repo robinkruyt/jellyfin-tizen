@@ -39,7 +39,7 @@ jobs:
         displayName: Setup Tizen Studio
         inputs:
           script: | 
-            export TIZEN_HOME=$(Agent.TempDirectory)/tizen/
+            export TIZEN_HOME=$(Agent.TempDirectory)/tizen
             export TIZEN_CLI_INSTALLER_URL=http://download.tizen.org/sdk/Installer/tizen-studio_3.7/web-cli_Tizen_Studio_3.7_ubuntu-64.bin
             export TIZEN_STUDIO=$TIZEN_HOME/tizen-studio
 
@@ -48,6 +48,7 @@ jobs:
               && apt-get -y install curl libssl1.0.0 \
               && rm -rf /var/lib/apt/lists/*
             
+            mkdir -p $TIZEN_HOME
             cd $TIZEN_HOME
 
             INSTALLER=$(Agent.TempDirectory)/$(basename "$TIZEN_CLI_INSTALLER_URL") \
@@ -68,7 +69,7 @@ jobs:
         inputs:
           script: |
             export CERTIFICATE_DIR=$(Agent.TempDirectory)/certificates
-            mkdir $CERTIFICATE_DIR
+            mkdir -p $CERTIFICATE_DIR
             echo $(CERTIFICATE) | base64 --decode > $CERTIFICATE_DIR/certificate.p12
             tizen security-profiles add -n DebugProfile -a $CERTIFICATE_DIR/certificate.p12 -p 1234
 
